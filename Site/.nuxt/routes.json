@@ -7,13 +7,6 @@
     "_name": "_7d8e33a1"
   },
   {
-    "name": "test",
-    "path": "/test",
-    "component": "E:\\\\Pirate\\\\Lebedev\\\\Site\\\\pages\\\\test.vue",
-    "chunkName": "pages/test",
-    "_name": "_4c20015c"
-  },
-  {
     "name": "index",
     "path": "/",
     "component": "E:\\\\Pirate\\\\Lebedev\\\\Site\\\\pages\\\\index.vue",

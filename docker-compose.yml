@@ -1,0 +1,31 @@
+version: '3'
+
+network:
+	
+
+services:
+    my1mg:
+      image: "alexboytsov/leb_beck"
+      ports:
+        - "8000:8000"
+      my2img:
+	
+    redis:
+      image: "redis:alpine"
+
+    database:
+    image: "mongo:latest"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
+
+
+services:
+    my1mg:
+      image: "alexboytsov/leb_front"
+      ports:
+        - "3000:3000"
+    redis:
+      image: "redis:alpine"
