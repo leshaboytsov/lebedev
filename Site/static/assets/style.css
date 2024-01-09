@@ -1,0 +1,57 @@
+@font-face {
+    font-family: Bold;
+    src: url("../fonts/OpenSans-Bold.ttf");
+    font-style:normal;
+}
+@font-face {
+    font-family: Regular;
+    src: url("../fonts/OpenSans-Regular.ttf");
+}
+
+html, body{margin: 0;padding: 0; background-color: rgb(255, 255, 255); }
+
+header{
+    padding: 15px;
+    border-bottom: 3px solid black;
+    display: flex;
+    justify-content: space-between
+}
+
+header a  {
+    margin: 0 auto;
+}
+
+.main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+
+      }
+
+
+
+.main img{
+    border-radius: 15px;
+    margin: 0 10px;
+
+}
+
+.movieBlock{ width: 300px; margin: 15px 40px;}
+.movieBlock a{font-family: Bold;text-decoration: none;font-size: 17px; color:black; display: flex;justify-content: center;overflow-wrap: break-word;}
+
+.filmpages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .videoPlyr {
+    width: 1000px;
+    margin: 20px;
+  }
+
+  .videoWrapper {
+    overflow: hidden;
+    border-radius: 15px;
+  }
