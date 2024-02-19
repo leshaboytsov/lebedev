@@ -1,0 +1,25 @@
+version: '3'
+services:
+  database:
+    image: "mongo:latest"
+    volumes:
+      - mongodb_data:/data/db
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment:
+      - MONGO_URI=mongodb://database:27018
+
+  frontend:
+    build:
+      context: ./Site
+      dockerfile: Dockerfile
+    environment:
+      - BASE_URL=/api
+
+volumes:
+  mongodb_data:
+
+

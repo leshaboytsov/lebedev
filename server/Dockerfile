@@ -8,14 +8,16 @@ FROM node:18-alpine
 WORKDIR /app
 
 # копируем оба 'package.json' и 'package-lock.json' (если есть)
-COPY package*.json ./
+COPY package.json yarn.lock ./
 
 # устанавливаем зависимости проекта и очищаем кеш npm
-RUN yarn install
+RUN yarn install --frozen-lockfile && yarn cache clean
 
 # копируем файлы и каталоги проекта в текущий рабочий каталог (т.е. в каталог 'app')
 COPY . .
 
-CMD [ "yarn", "start" ]
+RUN yarn build
+
+CMD [ "node", "dist/main.js" ]
 
 EXPOSE 8000
