@@ -11,11 +11,11 @@ WORKDIR /app
 COPY package*.json ./
 
 # устанавливаем зависимости проекта и очищаем кеш npm
-RUN npm install
+RUN yarn install
 
 # копируем файлы и каталоги проекта в текущий рабочий каталог (т.е. в каталог 'app')
 COPY . .
 
-CMD [ "node", "index.js" ]
+CMD [ "yarn", "start" ]
 
 EXPOSE 8000

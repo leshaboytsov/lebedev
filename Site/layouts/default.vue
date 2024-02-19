@@ -2,5 +2,6 @@
   <div>
   <Hat />
   <Nuxt />
+  <Foot />
 </div>
 </template>

@@ -2,20 +2,21 @@ version: '3'
 services:
     backend:
       image: node:18-alpine
-      command: node index.js
+      command: yarn start
       working_dir: /app
       volumes:
         - ./server:/app
       ports:
         - "8000:8000"
-
-    redis:
-      image: "redis:alpine"
+ 
 
     database:
       image: "mongo:latest"
-      volumes:
-        - mongodb_data:/data/db
+      # volumes:
+      #   - mongodb_data:/data/db
+      ports:
+        - "27017:27018"
+
 
     frontend:
       image: "node:18-alpine"
@@ -27,6 +28,9 @@ services:
       command: yarn dev
       ports:
         - "3000:3000"
+ 
 
 volumes:
   mongodb_data:
+
+
