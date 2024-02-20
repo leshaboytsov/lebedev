@@ -19,7 +19,14 @@ services:
     environment:
       - BASE_URL=/api
 
+  caddy:
+    image: "caddy:latest"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - /path/to/your/ssl/certificates:/etc/caddy/certs
+    ports:
+      - "80:80"
+      - "443:443"
+
 volumes:
   mongodb_data:
-
-
