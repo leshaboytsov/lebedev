@@ -6,7 +6,12 @@ import * as express from 'express';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors();
+  app.enableCors({
+    origin: 'http://lebedevnovosti.ru:3000',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Cache-Control',
+    credentials: true, // если ваши запросы требуют кукисы или авторизацию сессии
+  });
 
   // Используйте express.static для обслуживания статических файлов
   app.use('/film', express.static(join(__dirname, '..', 'film')));
