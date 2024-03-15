@@ -8,9 +8,9 @@
   src: url("../fonts/OpenSans-Regular.ttf");
 }
 h1{font-family: Bold;text-decoration: none;font-size: 24px;margin-top:20px; width: 1130px;}
-p1{font-family: Regular;text-decoration: none;font-size: 19px; margin-left: 20px;margin-top:5px; width: 1130px;}
-p2{font-family: Bold;text-decoration: none;font-size: 19px;margin-top:15px;margin-bottom:10px; width: 1130px;}
-p2{font-family: Bold;text-decoration: none;font-size: 19px;margin-top:15px;margin-bottom:10px; width: 1130px;}
+h2{font-family: Regular;text-decoration: none;font-size: 19px; margin-left: 20px;margin-top:5px; width: 1130px;}
+h3{font-family: Bold;text-decoration: none;font-size: 19px;margin-top:15px;margin-bottom:10px; width: 1130px;}
+h4{font-family: Bold;text-decoration: none;font-size: 19px;margin-top:15px;margin-bottom:10px; width: 1130px;}
 html, body{margin: 0;padding: 0; background-color: rgb(255, 255, 255); }
 
 header{padding: 15px;border-bottom: 3px solid black;display: flex;justify-content: space-between;}
@@ -18,12 +18,12 @@ header a {margin: 0 auto;width: 1130px;}
 
 footer {background-color: black; display: flex;justify-content: space-between;}
 footer a{font-family: Regular;text-decoration: none;font-size: 12px; color: antiquewhite;margin: 0 auto;}
-footer p3{font-family: Regular;color: antiquewhite;text-decoration: none;font-size: 12px;margin: 0 auto;}
+footer h3{font-family: Regular;color: antiquewhite;text-decoration: none;font-size: 12px;margin: 0 auto;}
 
 .main {display: flex;flex-wrap: wrap;justify-content: center;padding: 10px;width: 100%;max-width: 1360px;margin: 0 auto;}
 .main h1{font-family: Bold;text-decoration: none;font-size: 24px;margin-top:20px; width: 1130px;}
-.main p1{font-family: Regular;text-decoration: none;font-size: 19px; margin-left: 20px;margin-top:5px; width: 1130px;}
-.main p2{font-family: Bold;text-decoration: none;font-size: 19px;margin-top:15px;margin-bottom:10px; width: 1130px;}
+.main h2{font-family: Regular;text-decoration: none;font-size: 19px; margin-left: 20px;margin-top:5px; width: 1130px;}
+.main h3{font-family: Bold;text-decoration: none;font-size: 19px;margin-top:15px;margin-bottom:10px; width: 1130px;}
 .main img{border-radius: 15px;margin: 0 10px;}
 
 .movieBlock{ width: 350px; margin: 15px 20px;}

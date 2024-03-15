@@ -1,6 +1,6 @@
 <template>
     <footer>
         <nuxt-link :to="`/`">Главная</nuxt-link>
-        <p3>Почта: ------------</p3>
+        <h3>Почта: ------------</h3>
     </footer>
 </template>
