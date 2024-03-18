@@ -29,7 +29,7 @@
         // Создаем плеер после загрузки Player.js
         let player = new Playerjs({
           id: "player",
-          file: "http://lebedevnovosti.ru:8000/film/Test/Tideo/1.mp4", // Замените на ссылку на ваше видео
+          file: "http://lebedevnovosti.ru:8000/film/Test/Video/1.mp4", // Замените на ссылку на ваше видео
         });
       },
     },
