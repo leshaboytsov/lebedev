@@ -24,6 +24,7 @@ export default {
       videoPath: '',
       posterPath: '',
       player: null,
+      adLoaded: false,
     };
   },
   async created() {
@@ -53,7 +54,10 @@ export default {
 
     this.player.on('play', async () => {
       console.log('Воспроизведение начато');
-      await this.loadVastAd(); 
+      if (!this.adLoaded) {
+        await this.loadVastAd(); 
+        this.adLoaded = true;
+      }
     });
 
     this.player.source = {
@@ -67,6 +71,7 @@ export default {
     console.error('Ошибка загрузки Plyr:', error);
   }
 },
+
     // Функция для загрузки и воспроизведения VAST-рекламы
     async loadVastAd() {
   try {
