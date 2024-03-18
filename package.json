@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@algoz098/vue-player": "^0.4.3",
+    "playerjs": "^0.0.0",
     "plyr-ads": "^1.1.5"
   }
 }

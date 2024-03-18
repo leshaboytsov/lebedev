@@ -82,7 +82,7 @@ export default {
     // Функция для загрузки и воспроизведения VAST-рекламы
     async loadVastAd() {
   try {
-    const vastTag = 'https://ssp.bidster.net/vast/00000000-0000-0000-0000-000000000000';
+    const vastTag = 'https://ssp.bidster.net/vast/d774ffcc-8573-4053-be87-6d1018762eae?domain=lebedevnovosti.ru';
     //const vastTag = 'https://ssp.bidvol.com/vast/pl43822';
     const vastResponse = await fetch(vastTag);
     const vastData = await vastResponse.text();
@@ -143,4 +143,8 @@ extractAdContentUrl(vastData) {
     };
   },
 };
-</script>
+</script> 
+
+ 
+
+  
