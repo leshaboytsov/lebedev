@@ -15,9 +15,6 @@ export class Film extends Document {
   @Prop({ unique: true, required: true })
   url: string;
 
-  // @Prop({ unique: true, required: true })
-  // key: string;
-
   @Prop({ required: true })
   poster1: string;
 

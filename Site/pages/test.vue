@@ -36,9 +36,5 @@
   };
   </script>
   
-  <style>
-  #player {
-    width: 100%;
-  }
-  </style>
+
   

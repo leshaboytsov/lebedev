@@ -8,7 +8,6 @@ export class FilmsController {
 
   @Get()
   async findAll() {
-    console.log(121212)
     return await this.filmsService.findAll();
   }
 

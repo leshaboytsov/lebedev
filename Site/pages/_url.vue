@@ -3,9 +3,7 @@
     <h1>Здесь вы можете посмотреть выпуск {{ Film.description }} от {{ formatDate(Film.data) }} бесплатно</h1>
     <div class="videoPlyr">
       <div class="videoWrapper">
-        <video ref="videoPlayer" controls class="custom-plyr">
-          <source :src="videoPath" type="video/mp4" />
-        </video>
+        <div id="player"></div>
       </div>
     </div>
 
@@ -13,9 +11,6 @@
 </template>
 
 <script>
-import 'plyr/dist/plyr.css';
-import Plyr from 'plyr';
-
 
 export default {
   data() {
@@ -38,87 +33,30 @@ export default {
       this.Film = response.data;
       this.videoPath = this.getVideoUrl(this.Film.video);
       this.posterPath = this.getImageUrl(this.Film.poster1);
-      this.initializePlyr();
+      if (process.client) { // Проверка на наличие объекта document
+        this.initPlayer();
+      }
     } catch (error) {
       console.error(error);
     }
   },
 
   methods: {
-    async initializePlyr() {
-  try {
-    this.player = new Plyr(this.$refs.videoPlayer, {
-      controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen', 'settings'],
-      settings: ['speed'],
-    });
-
-    this.player.on('play', async () => {
-      console.log('Воспроизведение начато');
-    });
-
-    this.player.on('canplay', async () => {
-      console.log('Видео готово к воспроизведению, загружаем рекламу');
-      if (!this.adLoaded) {
-        await this.loadVastAd(); 
-        this.adLoaded = true;
-      }
-    });
-
-    this.player.source = {
-      type: 'video',
-      sources: [{
-        src: this.videoPath,
-        type: 'video/mp4',
-      }],
-    };
-  } catch (error) {
-    console.error('Ошибка загрузки Plyr:', error);
-  }
-},
-
-
-
-
-    // Функция для загрузки и воспроизведения VAST-рекламы
-    async loadVastAd() {
-  try {
-    const vastTag = 'https://ssp.bidster.net/vast/d774ffcc-8573-4053-be87-6d1018762eae?domain=lebedevnovosti.ru';
-    //const vastTag = 'https://ssp.bidvol.com/vast/pl43822';
-    const vastResponse = await fetch(vastTag);
-    const vastData = await vastResponse.text();
-
-    // Обработка vastData и добавление рекламного контента к видеоплееру
-    const adContentUrl = this.extractAdContentUrl(vastData);
-    this.player.on('play', async () => {
-      console.log('Воспроизведение рекламы');
-    });
-    this.player.source = {
-      type: 'video',
-      sources: [{
-        src: adContentUrl,
-        type: 'video/mp4',
-      }],
-    };
-  } catch (error) {
-    console.error('Ошибка загрузки VAST-рекламы:', error);
-  }
-},
-
-    // Функция для извлечения URL рекламного контента из XML-структуры VAST-документа
-extractAdContentUrl(vastData) {
-  const parser = new DOMParser();
-  const xmlDoc = parser.parseFromString(vastData, 'text/xml');
-
-  // Находим тег MediaFile
-  const mediaFileElement = xmlDoc.querySelector('MediaFile');
-  if (mediaFileElement) {
-    const adContentUrl = mediaFileElement.textContent.trim();
-    return adContentUrl;
-  } else {
-    throw new Error('URL рекламного контента не найден в XML-документе VAST');
-  }
-},
-
+    initPlayer() {
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = "/playerjs.js"; 
+        document.head.appendChild(script);
+          script.onload = () => {
+          this.initPlayerjs();
+        };
+      },
+      initPlayerjs() {
+        let player = new Playerjs({
+          id: "player",
+          file: this.videoPath
+        });
+      },
     getImageUrl(posterPath) {
       return `${posterPath}`;
     },
