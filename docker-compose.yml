@@ -1,5 +1,17 @@
 version: '3'
 services:
+    caddy:
+      image: caddy
+      restart: unless-stopped
+      ports:
+        - "80:80"
+        - "443:443"
+        - "443:443/udp"
+      volumes:
+        - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+        - caddy_data:/data
+        - caddy_config:/config
+
     backend:
       image: node:18-alpine
       command: yarn start
@@ -12,8 +24,8 @@ services:
 
     database:
       image: "mongo:latest"
-      # volumes:
-      #   - mongodb_data:/data/db
+      volumes:
+        - mongodb_data:/data/db
       ports:
         - "27017:27017"
 
@@ -32,6 +44,8 @@ services:
 
 volumes:
   mongodb_data:
+  caddy_data:
+  caddy_config:
 
 # version: '3'
 # services:
