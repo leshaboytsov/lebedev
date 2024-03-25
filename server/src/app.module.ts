@@ -6,7 +6,7 @@ import { Film, FilmSchema } from './films.model';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb://database:27017/'),
+    MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb://mongouser1:qwerty@database:27017/'),
     MongooseModule.forFeature([{ name: Film.name, schema: FilmSchema }]),
   ],
   controllers: [FilmsController],

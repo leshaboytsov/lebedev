@@ -29,7 +29,7 @@
         // Создаем плеер после загрузки Player.js
         let player = new Playerjs({
           id: "player",
-          file: "http://lebedevnovosti.ru:8000/film/Test/Video/1.mp4", // Замените на ссылку на ваше видео
+          file: "https://lebedevnovosti.ru/api/film/Test/Video/1.mp4", // Замените на ссылку на ваше видео
         });
       },
     },
