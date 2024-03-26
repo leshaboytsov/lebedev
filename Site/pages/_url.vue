@@ -33,7 +33,7 @@ export default {
       this.Film = response.data;
       this.videoPath = this.getVideoUrl(this.Film.video);
       this.posterPath = this.getImageUrl(this.Film.poster1);
-      if (process.client) { // Проверка на наличие объекта document
+      if (process.client) { 
         this.initPlayer();
       }
     } catch (error) {
