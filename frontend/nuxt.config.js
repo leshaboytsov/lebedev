@@ -23,6 +23,7 @@ export default {
   ],
 
   plugins: [
+    // { src: '~/plugins/yandex-metrika.js', mode: 'client' }
   ],
 
   components: true,
