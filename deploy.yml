@@ -2,6 +2,7 @@ version: '3'
 services:
   database:
     image: "mongo:latest"
+    restart: always
     volumes:
       - mongodb_data:/data/db
 
@@ -16,11 +17,14 @@ services:
     build:
       context: ./Site
       dockerfile: Dockerfile
+    restart: always
     environment:
       - BASE_URL=/api
+      - NODE_ENV=production
 
   caddy:
     image: "caddy:latest"
+    restart: always
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - /path/to/your/ssl/certificates:/etc/caddy/certs

@@ -1,3 +1,4 @@
 ### dotenv template
-.env*
+node_modules
+.nuxt
 

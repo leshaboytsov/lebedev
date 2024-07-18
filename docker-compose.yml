@@ -16,34 +16,30 @@ services:
       image: node:18-alpine
       command: yarn start
       working_dir: /app
+      restart: always
       volumes:
         - ./backend:/app
       ports:
         - "8000:8000"
- 
 
     database:
       image: "mongo:latest"
       environment:
         MONGO_INITDB_ROOT_USERNAME: mongouser1
         MONGO_INITDB_ROOT_PASSWORD: qwerty
+      restart: always
       volumes:
         - mongodb_data:/data/db
       ports:
-        - "27017:3001"
+        - "27017:27017"
 
 
     frontend:
-      image: "node:18-alpine"
-      environment:
-        - HOST=0.0.0.0
-      working_dir: /app
-      volumes:
-        - ./frontend:/app
-      command: yarn dev
+      build: ./frontend
+      command: "yarn start"
+      restart: always
       ports:
-        - "3001:3000"
- 
+        - "3000:3000"
 
 volumes:
   mongodb_data:

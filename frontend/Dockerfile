@@ -1,6 +1,6 @@
 
 
-FROM node:18-alpine as builder
+FROM node:18-alpine
 
 WORKDIR /app
 
@@ -10,9 +10,12 @@ RUN yarn install --frozen-lockfile && yarn cache clean
 
 COPY . .
 
+ENV NODE_ENV=production
+
 RUN yarn build
 
-ENV HOST 0.0.0.0
+ENV HOST=0.0.0.0
+
 EXPOSE 3000
 
 CMD [ "yarn", "start" ]

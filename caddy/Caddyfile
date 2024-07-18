@@ -1,9 +1,6 @@
 lebedevnovosti.ru {
 
   handle_path /api/* {
-    basicauth {
-      admin $2a$14$3MGoOUQ85bGHR19hDALKkeS/s8Jp46d4cbEtUU/H7UvpS88tsd7wK
-    }
     reverse_proxy backend:8000
   }
 
