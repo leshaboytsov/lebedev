@@ -1,0 +1,48 @@
+version: '3'
+services:
+    # caddy:
+    #   image: caddy
+    #   restart: unless-stopped
+    #   ports:
+    #     - "80:80"
+    #     - "443:443"
+    #     - "443:443/udp"
+    #   volumes:
+    #     - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+    #     - caddy_data:/data
+    #     - caddy_config:/config
+
+    backend:
+      image: node:18-alpine
+      command: yarn start
+      working_dir: /app
+      restart: always
+      volumes:
+        - ./backend:/app
+      ports:
+        - "8000:8000"
+
+    database:
+      image: "mongo:latest"
+      environment:
+        MONGO_INITDB_ROOT_USERNAME: mongouser1
+        MONGO_INITDB_ROOT_PASSWORD: qwerty
+      restart: always
+      volumes:
+        - mongodb_data:/data/db
+      ports:
+        - "27017:27017"
+
+
+    frontend:
+      build: ./frontend
+      command: "yarn run dev"
+      restart: always
+      ports:
+        - "3000:3000"
+
+volumes:
+  mongodb_data:
+  caddy_data:
+  caddy_config:
+

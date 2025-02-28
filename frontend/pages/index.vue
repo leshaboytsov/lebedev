@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    
+
     <h1>Добро пожаловать на сайт с выпусками шоу Артемия Лебедева</h1>
 <h2>Наш фан-сайт посвящен выпускам "Честных новостей".
 "Честные новости" от Артемия Лебедева - это информационные обзоры, в которых представлены актуальные события с острым и критическим взглядом. Мы анализируем новости без прикрас, добавляя нотки сарказма и юмора, чтобы подчеркнуть суть происходящего.</h2>
@@ -18,18 +18,19 @@
 
 <script>
 export default {
-  async created() {
+  async asyncData({$axios}) {
     try {
-      const response = await this.$axios.get(`films`, {
+      const response = await $axios.get(`films`, {
     headers: {
         'Cache-Control': 'no-cache'
     }
 });
-      this.Movies=response.data
+      Movies=response.data
     } catch (error) {
       console.error(error);
     }
   },
+
   data() {
     return {
       Movies: []
@@ -45,7 +46,7 @@ export default {
         { name: 'keywords', content: 'Артемий Лебедев, видео, контент, дизайн, творчество, ролики, развлечение, эксклюзив, креатив, веб-дизайн, предпринимательство, выпуск №, номер' },
       ]
     }
-  }, 
+  },
   methods:{
   formatDate(dateString) {
       const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
