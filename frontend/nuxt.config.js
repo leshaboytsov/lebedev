@@ -1,5 +1,4 @@
 
-
 export default {
   head: {
     title: 'Site',
@@ -18,7 +17,10 @@ export default {
       // { rel: 'stylesheet', href: '/path/to/plyr.css'}
     ]
   },
-
+  server: {
+    host: '0.0.0.0', // чтобы был доступ снаружи
+    port: 3000        // по умолчанию, можно изменить
+  },
   css: [
   ],
 
